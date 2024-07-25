@@ -1,17 +1,10 @@
 import React, { useState } from 'react';
-export default function Fields() {
-    const [userOutput, setUserOutput] = useState({
-        investmentValue: 1000,
-        annualInvestment: 1200,
-        expectedReturn: 6,
-        duration: 100
-    });
-
+export default function Fields({ userOutput, setUserOutput }) {
     function handleChange(inputIdentifire, newValue) {
         setUserOutput(prevUserInput => {
             return {
                 ...prevUserInput,
-                [inputIdentifire]: newValue
+                [inputIdentifire]: +newValue
             };
         });
     }

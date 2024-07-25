@@ -1,26 +1,42 @@
+import React, { useState } from 'react';
 export default function Fields() {
+    const [userOutput, setUserOutput] = useState({
+        investmentValue: 1000,
+        annualInvestment: 1200,
+        expectedReturn: 6,
+        duration: 100
+    });
+
+    function handleChange(inputIdentifire, newValue) {
+        setUserOutput(prevUserInput => {
+            return {
+                ...prevUserInput,
+                [inputIdentifire]: newValue
+            };
+        });
+    }
     return (
         <form id="user-input" >
 
             <div className="input-group ">
                 <p>
                     <label>Initial Investment</label>
-                    <input type="number" required />
+                    <input required type="number" value={ userOutput.investmentValue } onChange={ (event) => handleChange('investmentValue', event.target.value) } />
                 </p>
                 <p>
                     <label>Annual Investment</label>
-                    <input type="number" required />
+                    <input required type="number" value={ userOutput.annualInvestment } onChange={ (event) => handleChange('annualInvestment', event.target.value) } />
                 </p>
             </div>
 
             <div className="input-group ">
                 <p>
                     <label>Expected Return</label>
-                    <input type="number" required />
+                    <input required type="number" value={ userOutput.expectedReturn } onChange={ (event) => handleChange('expectedReturn', event.target.value) } />
                 </p>
                 <p>
                     <label>Duration</label>
-                    <input type="number" required />
+                    <input required type="number" value={ userOutput.duration } onChange={ (event) => handleChange('duration', event.target.value) } />
                 </p>
             </div>
         </form>

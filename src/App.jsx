@@ -10,14 +10,14 @@ function App() {
     expectedReturn: 6,
     duration: 10
   });
-  console.log("inside app", userOutput.duration);
+  const inputIsValid = userOutput.duration >= 1;
 
-  console.log(userOutput.duration);
   return (
     <main>
       <Header />
       <Fields userOutput={ userOutput } setUserOutput={ setUserOutput } />
-      <Result userOutput={ userOutput } />
+      { !inputIsValid && <p className="center">Please enter a valid duration</p> }
+      { inputIsValid && <Result userOutput={ userOutput } /> }
     </main>
   )
 }
